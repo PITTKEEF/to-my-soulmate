@@ -88,11 +88,11 @@ const mensagens = [
 
 "uma mistura de beleza, personalidade e presença.",
 
-"daquelas que fazem alguém parar por um segundo e pensar:",
+"daquela que fazem parar por um segundo e pensar:",
 
-"“essa garota é diferente.”",
+"“eu quero viver isso todos os dias.”",
 
-"talvez você nem perceba isso todos os dias.",
+"talvez você nem perceba isso.",
 
 "mas deveria.",
 
@@ -104,7 +104,7 @@ const mensagens = [
 
 "porque o mundo fica mais interessante com pessoas como você nele.",
 
-"e sim… esse pequeno código foi feito pensando em você."
+"e sim… esse pequeno código foi feito pensando em você equanto falo com você rs."
 ]
 
 let i = 0
@@ -132,7 +132,7 @@ document.querySelector("button").onclick = coracoes
 function coracoes(){
 
 document.getElementById("texto").innerHTML =
-"Se você chegou até aqui... significa que esse pequeno experimento funcionou. 🙂"
+"Se você chegou até aqui... significa que esse pequeno experimento louco feito as pressas funcionou. 🙂"
 
 document.querySelector("button").style.display="none"
 
@@ -161,3 +161,4 @@ setTimeout(()=>{heart.remove()},6000)
 </body>
 
 </html>
+
