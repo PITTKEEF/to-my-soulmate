@@ -1,0 +1,162 @@
+<Aline.html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Uma pequena coisa para Aline</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9eb5,#ffc3d1);
+font-family:Georgia, serif;
+text-align:center;
+overflow:hidden;
+}
+
+#box{
+background:white;
+padding:40px;
+border-radius:15px;
+max-width:500px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:8px;
+background:#ff5c8a;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+color:#ff3b6b;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="box">
+
+<h2 id="titulo">Oi Aline</h2>
+
+<p id="texto">
+Eu fiz uma pequena coisa diferente para você.
+</p>
+
+<button onclick="proximo()">Abrir</button>
+
+</div>
+
+<script>
+
+const mensagens = [
+
+"Entre bilhões de pessoas no mundo...",
+
+"é engraçado como algumas simplesmente chamam mais atenção.",
+
+"não só pela aparência...",
+
+"mas pelo jeito de ser.",
+
+"e você tem exatamente isso.",
+
+"uma mistura de beleza, personalidade e presença.",
+
+"daquelas que fazem alguém parar por um segundo e pensar:",
+
+"“essa garota é diferente.”",
+
+"talvez você nem perceba isso todos os dias.",
+
+"mas deveria.",
+
+"porque pessoas assim são raras.",
+
+"então fica aqui uma pequena lembrança:",
+
+"continue sendo exatamente quem você é.",
+
+"porque o mundo fica mais interessante com pessoas como você nele.",
+
+"e sim… esse pequeno código foi feito pensando em você."
+]
+
+let i = 0
+
+function proximo(){
+
+if(i < mensagens.length){
+
+document.getElementById("texto").innerHTML = mensagens[i]
+
+i++
+
+}else{
+
+document.getElementById("texto").innerHTML = "Agora uma última coisa..."
+
+document.querySelector("button").innerHTML="Toque aqui"
+
+document.querySelector("button").onclick = coracoes
+
+}
+
+}
+
+function coracoes(){
+
+document.getElementById("texto").innerHTML =
+"Se você chegou até aqui... significa que esse pequeno experimento funcionou. 🙂"
+
+document.querySelector("button").style.display="none"
+
+setInterval(()=>{
+
+let heart = document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.fontSize=(15+Math.random()*30)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{heart.remove()},6000)
+
+},300)
+
+}
+
+</script>
+
+</body>
+</html>
