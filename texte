@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Para Aline</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+background:#0b0b1a;
+font-family:Georgia,serif;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+}
+
+#card{
+position:relative;
+background:rgba(255,255,255,0.95);
+color:#333;
+padding:40px;
+border-radius:15px;
+max-width:500px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+transform:scale(0);
+transition:0.6s;
+}
+
+button{
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:8px;
+background:#ff4f7a;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+#texto{
+font-size:20px;
+line-height:1.6;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+color:#ff4f7a;
+pointer-events:none;
+animation:float 4s linear;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-200px);
+opacity:0;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<div id="card">
+
+<h2>Para Aline</h2>
+
+<p id="texto">
+Eu fiz uma pequena coisa diferente para você.
+</p>
+
+<button onclick="proximo()">Abrir</button>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("stars")
+const ctx = canvas.getContext("2d")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+let stars = []
+
+for(let i=0;i<120;i++){
+
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2
+})
+
+}
+
+function drawStars(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+ctx.fillStyle="white"
+
+stars.forEach(s=>{
+
+ctx.beginPath()
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2)
+ctx.fill()
+
+})
+
+requestAnimationFrame(drawStars)
+
+}
+
+drawStars()
+
+document.getElementById("card").style.transform="scale(1)"
+
+const mensagens=[
+
+"Aline,",
+
+"entre bilhões de pessoas no mundo...",
+
+"algumas simplesmente chamam mais atenção.",
+
+"não só pela aparência.",
+
+"mas pelo jeito de ser.",
+
+"e você tem exatamente isso.",
+
+"uma presença que é difícil de ignorar.",
+
+"daquelas que fazem alguém parar e pensar:",
+
+"essa garota é diferente.",
+
+"então eu resolvi fazer algo um pouco diferente também.",
+
+"um pequeno pedaço de código...",
+
+"só para te lembrar de uma coisa:",
+
+"continue sendo exatamente quem você é.",
+
+"porque o mundo fica mais interessante com pessoas como você nele."
+]
+
+let i=0
+
+function proximo(){
+
+if(i<mensagens.length){
+
+document.getElementById("texto").innerHTML=mensagens[i]
+
+i++
+
+}else{
+
+document.querySelector("button").innerHTML="Toque na tela"
+
+document.querySelector("button").onclick=null
+
+document.body.addEventListener("click",coracao)
+
+}
+
+}
+
+function coracao(e){
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤"
+
+heart.style.left=e.clientX+"px"
+heart.style.top=e.clientY+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{heart.remove()},4000)
+
+}
+
+</script>
+
+</body>
+</html>
